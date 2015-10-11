@@ -1,6 +1,6 @@
 {
   "name": "go-bindata",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "NodeJS package for using go-bindata in application builds",
   "main": "index.js",
   "scripts": {
