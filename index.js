@@ -5,16 +5,23 @@ var child = require('child_process');
 var BINDATA = path.join(__dirname, 'vendor', 'go-bindata-' + os.platform());
 
 module.exports = function(params) {
-  // build args
   var args = [];
-  for (var p in params) {
-    var str = '-' + p;
-    if (params[p] !== true) {
-      str += '=' + params[p];
-    }
 
-    args.push(str);
-  }
+  // loop over parameters
+  Object.keys(params).forEach(function(p) {
+    // force into an array if not
+    var vals = Array.isArray(params[p]) ? params[p] : [params[p]];
+
+    // loop over each and push onto args
+    vals.forEach(function(val) {
+      var str = '-' + p;
+      if (val !== true) {
+        str += '=' + val;
+      }
+
+      args.push(str);
+    });
+  });
 
   // grab paths
   var paths = Array.prototype.slice.call(arguments, 1);
