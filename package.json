@@ -1,6 +1,6 @@
 {
   "name": "go-bindata",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "NodeJS package for using go-bindata in application builds",
   "main": "index.js",
   "scripts": {
@@ -15,6 +15,9 @@
     "go-bindata",
     "gulp"
   ],
+  "bin": { 
+    "go-bindata": "./bin/go-bindata"
+  },
   "author": "Kenneth Shaw <kenneth.shaw@knq.io>",
   "license": "MIT",
   "bugs": {

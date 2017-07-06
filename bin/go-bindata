@@ -1,0 +1,19 @@
+#!/usr/bin/env node
+
+var os = require('os');
+var path = require('path');
+var process = require('process');
+var childProcess = require('child_process');
+
+var env = Object.create(process.env);
+var args = process.argv.length > 2 ? ' '+process.argv.slice(2).join(' ') : '';
+
+try {
+  var ext = os.platform() == 'windows' ? '.exe' : '';
+  childProcess.execSync(
+    path.resolve(__dirname, '../vendor/go-bindata-'+os.platform()+ext+args),
+    { env: env }
+  );
+} catch (e) {
+  process.exit(e.status);
+}
